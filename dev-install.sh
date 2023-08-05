@@ -29,7 +29,7 @@ nbExtFlags="--sys-prefix $1"
 # jlpm build
 
 echo -n "widgetsnbextension"
-pip install -v -e ./python/widgetsnbextension
+pip install widgetsnbextension
 if [[ "$OSTYPE" == "msys" ]]; then
     jupyter nbextension install --overwrite --py $nbExtFlags widgetsnbextension || true
 else
@@ -38,11 +38,11 @@ fi
 jupyter nbextension enable --py $nbExtFlags widgetsnbextension || true
 
 echo -n "ipywidgets"
-pip install -v -e "./python/ipywidgets[test]"
+pip install ipywidgets
 
 if test "$skip_jupyter_lab" != yes; then
     echo -n "jupyterlab_ipywidgets"
     pip install jupyter_packaging
-    pip install -ve ./python/jupyterlab_widgets
-    jupyter labextension develop ./python/jupyterlab_widgets --overwrite
+    pip install jupyterlab_widgets
+    jupyter labextension develop jupyterlab_widgets --overwrite
 fi
