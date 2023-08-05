@@ -5,4 +5,6 @@ set -e
 npm install -g yarn
 yarn set version stable
 
+git add --chmod=+x ./dev-install.sh
+
 ./dev-install.sh
